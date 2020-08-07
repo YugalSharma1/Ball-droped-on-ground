@@ -11,7 +11,7 @@ void draw()
 { 
   
   background(102);
-  if(y>=460) flag=-1*flag;
+  if(y>=460) flag=-1*flag;  // ground surface is at about y=460 pixel 
   else yvel+=flag*yacc;
   y+=flag*yvel;
   fill(255,0,40);
