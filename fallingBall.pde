@@ -1,6 +1,6 @@
 float rad=60;
 float yvel=0, yacc=1; 
-float y0=2*rad, x0=100;
+float y0=2*rad, x0=300;
 float y=y0;
 int flag=-1;
 float xplot=0;
