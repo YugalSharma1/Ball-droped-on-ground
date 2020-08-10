@@ -26,13 +26,15 @@ function draw() {
         y += v;
         v += a;
         clear();
-        circle(x, y, radius);
-        if (y > window.innerHeight - radius) {
+         if (y > window.innerHeight - radius) {
             y = window.innerHeight - radius;
             v -= Math.max(dampen, 0.1 * Math.abs(v));
+            //v-=dampen;
             v = -v;
-            print(v)
+            print(v);
         }
+        circle(x, y, radius);
+     
 
 
 
