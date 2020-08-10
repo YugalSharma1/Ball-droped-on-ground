@@ -1,5 +1,5 @@
 float rad=60;
-float yvel=0, yacc=1; 
+float yvel=0, yacc=1; //vel unit: pixel/frame, acc unit: vel/frame
 float y0=2*rad, x0=300;
 float y=y0;
 int flag=-1;
@@ -8,8 +8,7 @@ float plotxgap=1;
 
 PGraphics plot;
 PGraphics ball;
-PGraphics outlines;
-PGraphics text;
+PGraphics Outlines;
 
 void setup()
 {
@@ -17,9 +16,16 @@ void setup()
   
   plot = createGraphics(width,height);
   ball = createGraphics(width,height);
-  outlines = createGraphics(width,height);
-  text = createGraphics(width,height);
+  Outlines = createGraphics(width,height);
   
+  Outlines.beginDraw();
+  Outlines.strokeWeight(3);
+  Outlines.line(0,60,width,60);
+  Outlines.line(300,0,300,60);
+  Outlines.strokeWeight(1);
+  Outlines.endDraw();
+  
+  image(Outlines, 0, 0);
 }
 void draw()
 { 
@@ -27,19 +33,9 @@ void draw()
   else yvel+=flag*yacc;
   y+=flag*yvel;
   
-  text.beginDraw();
-  text.background(150); text.fill(0,30,255); text.textSize(40); text.text("Y=",10,40); text.text(y,60,40); 
-  text.endDraw();
-  image(text,0,0);
-  
-  outlines.beginDraw();
-  outlines.strokeWeight(3);
-  outlines.line(0,60,width,60);
-  outlines.line(300,0,300,60);
-  outlines.strokeWeight(1);
-  outlines.endDraw();
-  image(outlines, 0, 0);
-      
+  if (yvel==0)
+    {fill(0,30,255); textSize(40); text("Y=",10,40); text(y,60,40);}
+    
   plot.beginDraw();
   plot.strokeWeight(1);
   plot.stroke(0,30,255);
