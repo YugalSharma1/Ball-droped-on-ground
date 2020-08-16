@@ -48,8 +48,6 @@ void draw()
   
   if(xplot<width){    
   plot.beginDraw();
-  //border(4,200,plot);
-  //plot.background(230);
   plot.strokeWeight(1);
   plot.stroke(0,30,255);
   plot.line(xplot,(y-120)*60/(471-120),xplot+plotxgap,(y-yvel-120)*60/(471-120)); xplot+=plotxgap;
@@ -65,9 +63,3 @@ void draw()
   image(ball,0,0);
    
 }
-//void border(int w,int c,PGraphics L)
-//{
-//  stroke(c);
-//  strokeWeight(w);
-//  L.line(2,2,0,L.height); L.line(0,L.height,L.width,L.height); L.line(L.width,L.height,L.width,0); L.line(L.width,0,0,0);
-//}
