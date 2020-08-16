@@ -2,11 +2,11 @@ float rad=60;
 float yvel=0, yacc=1; 
 float y0=2*rad, x0=300;
 float y=y0;
-int flag=-1;
 float xplot=0;
 float plotxgap=1;
 float ymax=0;
 float ymin=y0;
+float damp=0.915;
 
 PGraphics plot;
 PGraphics ball;
@@ -25,9 +25,9 @@ void setup()
 }
 void draw()
 { 
-  if(y>=460) flag=-1*flag; 
-  else yvel+=flag*yacc;
-  y+=flag*yvel;
+  if(y>=460) yvel=-damp*yvel; 
+  else yvel+=yacc;
+  y+=yvel;
   
   if(y<ymin) ymin=y;
   if(y>ymax) ymax=y;
@@ -56,7 +56,9 @@ void draw()
   plot.endDraw();}
   image(plot,302,0);
   
+  
   ball.beginDraw();
+  ball.clear();
   ball.fill(255,0,40);
   ball.ellipse(x0,y,rad,rad);
   ball.endDraw();
